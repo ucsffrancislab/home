@@ -1,0 +1,27 @@
+[user]
+	email = github@jakewendt.com
+	name = Jake
+#	git config --global alias.stauts status
+[alias]
+	stauts = status
+	staut = status
+	statu = status
+	stat = status
+	st = status
+	s = status
+	cm = commit -m
+	co = commit
+	up = pull
+	d = diff
+	di = diff
+	dif = diff
+#	git config --global github.user jakewendt
+[github]
+	user = jakewendt
+[push]
+	default = matching
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+	process = git-lfs filter-process
