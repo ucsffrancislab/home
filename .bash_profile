@@ -38,6 +38,7 @@ alias psme="ps -fU \$USER"
 alias topme="top -U \$USER"
 alias htopme="htop -u \$USER"
 alias vi=vim
+alias qstat="qstat -u \$USER"
 
 #	"Better" done in .inputrc
 #set -o vi
@@ -59,19 +60,25 @@ history -s pip install --upgrade --user pip awscli boto3 jupyter numpy scipy skl
 module load CBC
 module load openssl/1.1.1a
 
-module load python3
+module load python3	#	"fragile", would be nice if newer version were available
 alias python=python3
 
 
 module load bowtie2/2.3.4.1
-#	module load kallisto/0.44.0
-module load gcc/5.1.0
+#	module load kallisto/0.44.0	#	I installed newer version
+
+#	module load gcc/5.1.0	#	doesn't load
+module load gcc/4.9.2
+
 module load r/3.6.1
 
 #	NEEDED for bbmap tools
 module load jdk/8
 
 module load gatk/4.0.2.1
+
+module load udocker/1.1.0
+
 
 export LD_LIBRARY_PATH="/home/gwendt/.local/lib/:/home/gwendt/.local/lib64:${LD_LIBRARY_PATH}"
 export CPPFLAGS="-I/home/gwendt/.local/include -I/home/gwendt/.local/include/openssl ${CPPFLAGS}"
