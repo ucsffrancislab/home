@@ -58,13 +58,15 @@ history -s pip install --upgrade --user pip awscli boto3 jupyter numpy scipy skl
 
 
 module load CBC
+module load htop
 module load openssl/1.1.1a
 
-module load python3	#	"fragile", would be nice if newer version were available
-alias python=python3
+#module load python3	#	"fragile", would be nice if newer version were available
+#alias python=python3
+module load python/2.7.15
 
 
-module load bowtie2/2.3.4.1
+#module load bowtie2/2.3.4.1	#	I installed newer version
 #	module load kallisto/0.44.0	#	I installed newer version
 
 #	module load gcc/5.1.0	#	doesn't load
@@ -77,7 +79,9 @@ module load jdk/8
 
 module load gatk/4.0.2.1
 
-module load udocker/1.1.0
+#module load udocker/1.1.0
+
+module load blast/2.7.1
 
 
 export LD_LIBRARY_PATH="/home/gwendt/.local/lib/:/home/gwendt/.local/lib64:${LD_LIBRARY_PATH}"
