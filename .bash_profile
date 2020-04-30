@@ -23,12 +23,13 @@ export PATH
 #PS1=\h:\W \u\$
 PS1='\[\e[1;1m\][\u@\h \w]\$\[\e[0m\] '
 
-alias gzip="gzip --best"
+#alias gzip="gzip --best"
 alias grep="grep -is"
 alias ..="cd .."
 alias cd..="cd .."
 alias la="\ls -al --color=auto"
-alias ll="\ls -lG --color=auto"
+#alias ll="\ls -lG --color=auto"
+alias ll="\ls -l --color=auto"
 alias ln="ln -s"
 alias more="less"
 alias rm="rm -i"
@@ -52,7 +53,8 @@ function relink {
 #	(without using the -r, the history of the new shell will only show those manually added to it.)
 history -r
 #	-s The args are added to the end of the history list as a single entry.
-history -s pip install --upgrade --user pip awscli boto3 jupyter numpy scipy sklearn pandas sqlalchemy seaborn pandoc boto3
+#history -s pip install --upgrade --user pip awscli boto3 jupyter numpy scipy sklearn pandas sqlalchemy seaborn pandoc boto3
+history -s pip install --upgrade --user pip awscli boto3 jupyter numpy scipy sklearn sqlalchemy pandoc
 
 
 
@@ -81,18 +83,48 @@ module load gatk/4.0.2.1
 
 #module load udocker/1.1.0
 
-module load blast/2.7.1
+#	Locally installed 2.8.1 to work with new blast databases
+#module load blast/2.7.1
+
+module load coreutils/8.6
+
+module load sqlite
+
+#	for gffread
+module load cufflinks
+
+module load cmake
+
+#module load plink2	#	too new. Downloaded plink v1.90b6.16.
+
+module load gawk
+
+module load bedtools2
 
 
-export LD_LIBRARY_PATH="/home/gwendt/.local/lib/:/home/gwendt/.local/lib64:${LD_LIBRARY_PATH}"
+
+#	Add /home/shared/cbc/local/lib/libgmp.so for jellyfish and likely MEGAN
+
+export LD_LIBRARY_PATH="/home/gwendt/.local/lib/:/home/gwendt/.local/lib64:/home/shared/cbc/local/lib:${LD_LIBRARY_PATH}"
 export CPPFLAGS="-I/home/gwendt/.local/include -I/home/gwendt/.local/include/openssl ${CPPFLAGS}"
+#export LDFLAGS="-L/home/gwendt/.local/lib -L/home/gwendt/.local/lib64 -Wl,-rpath,/home/gwendt/.local/lib -Wl,-rpath,/home/gwendt/.local/lib64 -L/home/shared/cbc/local/lib ${LDFLAGS}"
 export LDFLAGS="-L/home/gwendt/.local/lib -L/home/gwendt/.local/lib64 -Wl,-rpath,/home/gwendt/.local/lib -Wl,-rpath,/home/gwendt/.local/lib64 ${LDFLAGS}"
 export CXXFLAGS="-fPIC ${CXXFLAGS}"
 
-export BOWTIE2_INDEXES=/data/shared/francislab/refs/bowtie2
+export BOWTIE2_INDEXES=/francislab/data1/refs/bowtie2
+export BLASTDB=/francislab/data1/refs/blastn/
+
 
 
 #	Put this AFTER all of the module stuff
 PATH=${HOME}/.local/bin:${PATH}
 PATH=".:$PATH"
+
+
+#[gwendt@cclc01 /francislab/data1/raw/E-GEOD-105052]$ echo $PATH
+#...../usr/lib64/qt-3.3/bin:/opt/bin:/opt/Git/Git-latest/bin:/opt/local/bin
+
+#	For some reason, the head node has a few extra directories in the PATH???
+
+#PATH="$PATH:/usr/lib64/qt-3.3/bin:/opt/bin:/opt/Git/Git-latest/bin:/opt/local/bin"
 
