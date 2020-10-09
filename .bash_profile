@@ -62,10 +62,12 @@ history -s pip install --upgrade --user pip awscli boto3 jupyter numpy scipy skl
 module load CBC
 module load htop
 module load openssl/1.1.1a
+module load zlib
 
 #module load python3	#	"fragile", would be nice if newer version were available
 #alias python=python3
-module load python/2.7.15
+#module load python/2.7.15
+module load python/2.7.10	#	2.7.10 for gdc-client
 
 
 #module load bowtie2/2.3.4.1	#	I installed newer version
@@ -102,6 +104,19 @@ module load gawk
 module load bedtools2
 
 
+module load git git-lfs
+
+#module load gdc-client	#	OLD version 1.0.1
+
+
+module load bwa	#/0.7.17
+
+
+#module load sratoolkit
+#module load sratoolkit/2.8.2-1
+
+module load fastqc
+
 
 #	Add /home/shared/cbc/local/lib/libgmp.so for jellyfish and likely MEGAN
 
@@ -111,14 +126,35 @@ export CPPFLAGS="-I/home/gwendt/.local/include -I/home/gwendt/.local/include/ope
 export LDFLAGS="-L/home/gwendt/.local/lib -L/home/gwendt/.local/lib64 -Wl,-rpath,/home/gwendt/.local/lib -Wl,-rpath,/home/gwendt/.local/lib64 ${LDFLAGS}"
 export CXXFLAGS="-fPIC ${CXXFLAGS}"
 
+
+#
+#The Boost C++ Libraries were successfully built!
+#
+#The following directory should be added to compiler include paths:
+#
+#export CPPFLAGS="-I/home/gwendt/.local/boost_1_74_0 ${CPPFLAGS}"
+#export CPATH="/home/gwendt/.local/boost_1_74_0:${CPATH}"
+#    /home/gwendt/.local/boost_1_74_0
+#
+#The following directory should be added to linker library paths:
+#
+#export LDFLAGS="-L/home/gwendt/.local/boost_1_74_0/stage/lib ${LDFLAGS}"
+#export LD_LIBRARY_PATH="/home/gwendt/.local/boost_1_74_0/stage/lib:${LD_LIBRARY_PATH}"
+#    /home/gwendt/.local/boost_1_74_0/stage/lib
+#
+
+
 export BOWTIE2_INDEXES=/francislab/data1/refs/bowtie2
 export BLASTDB=/francislab/data1/refs/blastn/
 
 
 
 #	Put this AFTER all of the module stuff
-PATH=${HOME}/.local/bin:${PATH}
+#PATH=${HOME}/.local/bin:${HOME}/.local/perl/bin:${PATH}:${HOME}/.local/sratoolkit/bin
+PATH=${HOME}/.local/bin:${HOME}/.local/perl/bin:${PATH}
 PATH=".:$PATH"
+
+PERL5LIB=${HOME}/.local/perl/lib
 
 
 #[gwendt@cclc01 /francislab/data1/raw/E-GEOD-105052]$ echo $PATH
@@ -127,4 +163,12 @@ PATH=".:$PATH"
 #	For some reason, the head node has a few extra directories in the PATH???
 
 #PATH="$PATH:/usr/lib64/qt-3.3/bin:/opt/bin:/opt/Git/Git-latest/bin:/opt/local/bin"
+
+
+umask 0027
+
+export LD_LIBRARY_PATH=/home/gwendt/.local/lib64:$LD_LIBRARY_PATH
+export NGS_LIBDIR=/home/gwendt/.local/lib64
+export CLASSPATH=/home/gwendt/.local/jar/ngs-java.jar:$CLASSPATH
+
 
