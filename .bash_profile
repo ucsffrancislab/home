@@ -93,7 +93,7 @@ module load coreutils/8.6
 module load sqlite
 
 #	for gffread
-module load cufflinks
+#module load cufflinks
 
 module load cmake
 
@@ -116,6 +116,41 @@ module load bwa	#/0.7.17
 #module load sratoolkit/2.8.2-1
 
 module load fastqc
+
+
+module load bcl2fastq
+
+
+#module load bowtie
+#module load tophat
+
+#module load bowtie #triggers downgrading python from 2.7.10 to 2.7.9 which triggers other failures
+#module load bowtie2/2.1.0
+
+module load cufflinks	#	for CIRCexplorer2
+
+#module load samtools/0.1.19-patched
+#module load samtools	#/0.1.19-patched
+#module load bowtie/1.2.2
+#export PATH="$HOME/.local/bowtie-1.2.3:$PATH"
+#export PATH="$HOME/.local/bowtie-1.3.0:$PATH"
+#module load bowtie2/2.1.0
+#export PATH="$HOME/.local/bowtie2-2.2.2:$PATH"
+#export PATH="$HOME/.local/bowtie2-2.3.5.1:$PATH"
+#module load tophat/2.1.0
+#export PATH="$HOME/.local/tophat-2.1.1:$PATH"
+
+
+#	prep for CIRCexplorer2
+export PATH="$HOME/.local/tophat-2.1.0/:$PATH"
+module load samtools/1.7
+module load bowtie2/2.3.4.1
+
+echo "Loading bowtie 1.2.2 which will change python to 2.7.9"
+module load bowtie/1.2.2
+echo "Changing python back to 2.7.10"
+module load python/2.7.10
+
 
 
 #	Add /home/shared/cbc/local/lib/libgmp.so for jellyfish and likely MEGAN
@@ -144,6 +179,7 @@ export CXXFLAGS="-fPIC ${CXXFLAGS}"
 #
 
 
+#export BOWTIE_INDEXES=/francislab/data1/refs/bowtie
 export BOWTIE2_INDEXES=/francislab/data1/refs/bowtie2
 export BLASTDB=/francislab/data1/refs/blastn/
 
@@ -170,5 +206,11 @@ umask 0027
 export LD_LIBRARY_PATH=/home/gwendt/.local/lib64:$LD_LIBRARY_PATH
 export NGS_LIBDIR=/home/gwendt/.local/lib64
 export CLASSPATH=/home/gwendt/.local/jar/ngs-java.jar:$CLASSPATH
+
+#PATH="~/.local/bowtie2-2.2.2/:~/.local/tophat-2.0.9.Linux_x86_64/:$PATH"
+
+#export PATH="$HOME/.local/bowtie2-2.2.2:$HOME/.local/bowtie-1.2.3:$HOME/.local/tophat-2.0.9:$PATH"
+#export PATH="$HOME/.local/bowtie2-2.2.2:$HOME/.local/bowtie-1.2.3:$HOME/.local/tophat-2.1.1:$PATH"
+
 
 
