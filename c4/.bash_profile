@@ -61,11 +61,28 @@ function relink {
 
 #	C4 does not do module in the login nodes so need to add condition here
 #
-if [[ $HOSTNAME != *"log"* ]] ; then 
+#if [[ $HOSTNAME != *"log"* ]] ; then 
+#if [[ -n "$MODULEPATH" ]]; then
+#if [[ $HOSTNAME = "c4-n"* ]] ; then 
+if [[ $HOSTNAME == "c4-"+(n|dev)* ]]; then
+#
+#	This does not get source this file by run jobs
+#
+
 	echo "Loading modules"
 
 	module load CBI #	module load CBC
 	module load htop
+
+	module load htslib
+	module load samtools
+	module load bowtie
+	module load bowtie2	#	trying older version bowtie2 2.2.2 for CIRCexplorer2. No joy
+	module load tophat
+	module load bcl2fastq
+	module load kallisto
+#	module load bcftools
+#	module load r
 
 	#	Many of my installs likely unnecessary on C4
 
@@ -121,8 +138,8 @@ if [[ $HOSTNAME != *"log"* ]] ; then
 #	
 #	#module load sratoolkit
 #	#module load sratoolkit/2.8.2-1
-#	
-#	module load fastqc
+	
+	module load fastqc
 
 fi
 
@@ -164,7 +181,12 @@ export BLASTDB=/francislab/data1/refs/blastn/
 PATH=${HOME}/.local/bin:${HOME}/.local/perl/bin:${PATH}
 PATH=".:$PATH"
 
-PERL5LIB=${HOME}/.local/perl/lib
+PATH="${PATH}:${HOME}/.local/rmblast/bin"
+
+#PERL5LIB=${HOME}/.local/perl5/lib
+#export PERL5LIB="/c4/home/gwendt/.local/perl5/lib/perl5" #:$PERL5LIB";
+
+
 
 
 #[gwendt@cclc01 /francislab/data1/raw/E-GEOD-105052]$ echo $PATH
@@ -181,5 +203,16 @@ umask 0027
 #export LD_LIBRARY_PATH=${HOME}/.local/lib64:$LD_LIBRARY_PATH
 #export NGS_LIBDIR=${HOME}/.local/lib64
 #export CLASSPATH=${HOME}/.local/jar/ngs-java.jar:$CLASSPATH
+
+
+export CFLAGS="-I${HOME}/.local/include ${CFLAGS}"
+export CPPFLAGS="-I${HOME}/.local/include ${CPPFLAGS}"
+export LDFLAGS="-L${HOME}/.local/lib ${LDFLAGS}"
+export LD_LIBRARY_PATH="${HOME}/.local/lib:${HOME}/.local/lib/openmpi:${LD_LIBRARY_PATH}"
+export LD_RUN_PATH="${HOME}/.local/lib:${HOME}/.local/lib/openmpi:${LD_RUN_PATH}"
+
+
+#	openmpi
+#   - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
 
 
