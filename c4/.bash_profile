@@ -60,88 +60,130 @@ function relink {
 
 
 #	C4 does not do module in the login nodes so need to add condition here
-#
-#if [[ $HOSTNAME != *"log"* ]] ; then 
-#if [[ -n "$MODULEPATH" ]]; then
-#if [[ $HOSTNAME = "c4-n"* ]] ; then 
-if [[ $HOSTNAME == "c4-"+(n|dev)* ]]; then
-#
-#	This does not get source this file by run jobs
-#
+if [ -n "$( declare -F module )" ] ; then
 
-	echo "Loading modules"
+	echo "Loading basic modules"
 
-	module load CBI #	module load CBC
+	module load CBI
 	module load htop
 
-	module load htslib
-	module load samtools
-	module load bowtie
-	module load bowtie2	#	trying older version bowtie2 2.2.2 for CIRCexplorer2. No joy
-	module load tophat
-	module load bcl2fastq
-	module load kallisto
-#	module load bcftools
-#	module load r
-
-	#	Many of my installs likely unnecessary on C4
-
-#	module load openssl/1.1.1a
-#	module load zlib
-#	
-#	#module load python3	#	"fragile", would be nice if newer version were available
-#	#alias python=python3
-#	#module load python/2.7.15
-#	module load python/2.7.10	#	2.7.10 for gdc-client
-#	
-#	#module load bowtie2/2.3.4.1	#	I installed newer version
-#	#	module load kallisto/0.44.0	#	I installed newer version
-#	
-#	#	module load gcc/5.1.0	#	doesn't load
-#	module load gcc/4.9.2
-#	
-#	module load r/3.6.1
-#	
-#	#	NEEDED for bbmap tools
-#	module load jdk/8
-#	
-#	module load gatk/4.0.2.1
-#	
-#	#module load udocker/1.1.0
-#	
-#	#	Locally installed 2.8.1 to work with new blast databases
-#	#module load blast/2.7.1
-#	
-#	module load coreutils/8.6
-#	
-#	module load sqlite
-#	
-#	#	for gffread
-#	module load cufflinks
-#	
-#	module load cmake
-#	
-#	#module load plink2	#	too new. Downloaded plink v1.90b6.16.
-#	
-#	module load gawk
-#	
-#	module load bedtools2
-#	
-#	
-#	module load git git-lfs
-#	
-#	#module load gdc-client	#	OLD version 1.0.1
-#	
-#	
-#	module load bwa	#/0.7.17
-#	
-#	
-#	#module load sratoolkit
-#	#module load sratoolkit/2.8.2-1
-	
-	module load fastqc
-
+#		module load htslib
+#		module load samtools
+#		module load sratoolkit/2.10.9
+#		module load fastqc
+#	  module load mpi/openmpi-x86_64
+#	#	#	module load mpi/openmpi3-x86_64
+#		export PYTHONPATH=""
 fi
+
+
+
+
+
+##
+##if [[ $HOSTNAME != *"log"* ]] ; then 
+##if [[ -n "$MODULEPATH" ]]; then
+##if [[ $HOSTNAME = "c4-n"* ]] ; then 
+#if [[ $HOSTNAME == "c4-"+(n|dev)* ]]; then
+##
+##	This does not get source this file by run jobs
+##
+##	or
+##echo $LMOD_CMD 
+##/usr/share/lmod/lmod/libexec/lmod
+##if [ -n "${LMOD_CMD}" ] ; then
+#
+##declare -F module
+##module_exists=$?
+##if [ $module_exists -eq 0 ] ; then
+##if [ -n "$( declare -F module )" ] ; then
+#
+#	echo "Loading modules"
+#
+#	module load CBI #	module load CBC
+#	module load htop
+#
+#	module load htslib
+#	module load samtools
+#	module load bowtie
+#	module load bowtie2	#	trying older version bowtie2 2.2.2 for CIRCexplorer2. No joy
+#	module load tophat
+#	module load bcl2fastq
+#	module load kallisto
+##	module load bcftools
+##	module load r
+#
+#	#	Many of my installs likely unnecessary on C4
+#
+##	module load openssl/1.1.1a
+##	module load zlib
+##	
+##	#module load python3	#	"fragile", would be nice if newer version were available
+##	#alias python=python3
+##	#module load python/2.7.15
+##	module load python/2.7.10	#	2.7.10 for gdc-client
+##	
+##	#module load bowtie2/2.3.4.1	#	I installed newer version
+##	#	module load kallisto/0.44.0	#	I installed newer version
+##	
+##	#	module load gcc/5.1.0	#	doesn't load
+##	module load gcc/4.9.2
+##	
+##	module load r/3.6.1
+##	
+##	#	NEEDED for bbmap tools
+##	module load jdk/8
+##	
+##	module load gatk/4.0.2.1
+##	
+##	#module load udocker/1.1.0
+##	
+##	#	Locally installed 2.8.1 to work with new blast databases
+##	#module load blast/2.7.1
+##	
+##	module load coreutils/8.6
+##	
+##	module load sqlite
+##	
+##	#	for gffread
+##	module load cufflinks
+##	
+##	module load cmake
+##	
+##	#module load plink2	#	too new. Downloaded plink v1.90b6.16.
+##	
+##	module load gawk
+##	
+##	module load bedtools2
+##	
+##	
+##	module load git git-lfs
+##	
+##	#module load gdc-client	#	OLD version 1.0.1
+##	
+##	
+##	module load bwa	#/0.7.17
+##	
+##	
+##	#module load sratoolkit
+##	#module load sratoolkit/2.8.2-1
+#	
+#	module load sratoolkit/2.10.9
+#	module load fastqc
+#
+#
+##	Don't use this 
+##  module load mpi/openmpi-x86_64
+##	its sets PYTHONPATH
+##	/usr/lib64/python2.7/site-packages/openmpi
+##	which causes problems when trying to run python3 scripts
+#
+##	module load mpi/openmpi-x86_64
+##	#module load mpi/openmpi3-x86_64
+##	export PYTHONPATH=""
+#
+#
+#fi
 
 
 #	Add /home/shared/cbc/local/lib/libgmp.so for jellyfish and likely MEGAN
@@ -208,11 +250,30 @@ umask 0027
 export CFLAGS="-I${HOME}/.local/include ${CFLAGS}"
 export CPPFLAGS="-I${HOME}/.local/include ${CPPFLAGS}"
 export LDFLAGS="-L${HOME}/.local/lib ${LDFLAGS}"
-export LD_LIBRARY_PATH="${HOME}/.local/lib:${HOME}/.local/lib/openmpi:${LD_LIBRARY_PATH}"
-export LD_RUN_PATH="${HOME}/.local/lib:${HOME}/.local/lib/openmpi:${LD_RUN_PATH}"
+#export LD_LIBRARY_PATH="${HOME}/.local/lib:${HOME}/.local/lib/openmpi:${LD_LIBRARY_PATH}"
+#export LD_RUN_PATH="${HOME}/.local/lib:${HOME}/.local/lib/openmpi:${LD_RUN_PATH}"
+export LD_LIBRARY_PATH="${HOME}/.local/lib:${LD_LIBRARY_PATH}"
+export LD_RUN_PATH="${HOME}/.local/lib:${LD_RUN_PATH}"
 
 
 #	openmpi
 #   - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
 
+
+#in:/c4/home/gwendt/bin:/c4/home/gwendt/.local/rmblast/bin:/sbin" ldconfig -n /c4/home/gwendt/.local/lib
+#----------------------------------------------------------------------
+#Libraries have been installed in:
+#   /c4/home/gwendt/.local/lib
+#
+#If you ever happen to want to link against installed libraries
+#in a given directory, LIBDIR, you must either use libtool, and
+#specify the full pathname of the library, or use the '-LLIBDIR'
+#flag during linking and do at least one of the following:
+#   - add LIBDIR to the 'LD_LIBRARY_PATH' environment variable
+#     during execution
+#   - add LIBDIR to the 'LD_RUN_PATH' environment variable
+#     during linking
+#   - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
+#   - have your system administrator add LIBDIR to '/etc/ld.so.conf'
+#
 
