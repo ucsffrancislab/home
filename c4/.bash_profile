@@ -214,7 +214,7 @@ fi
 
 
 export BOWTIE2_INDEXES=/francislab/data1/refs/bowtie2
-export BLASTDB=/francislab/data1/refs/blastn/
+export BLASTDB=/francislab/data1/refs/blast
 
 
 
@@ -255,6 +255,7 @@ export LDFLAGS="-L${HOME}/.local/lib ${LDFLAGS}"
 export LD_LIBRARY_PATH="${HOME}/.local/lib:${LD_LIBRARY_PATH}"
 export LD_RUN_PATH="${HOME}/.local/lib:${LD_RUN_PATH}"
 
+export PATH=${PATH}:${HOME}/.local/edirect
 
 #	openmpi
 #   - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
@@ -276,4 +277,16 @@ export LD_RUN_PATH="${HOME}/.local/lib:${LD_RUN_PATH}"
 #   - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
 #   - have your system administrator add LIBDIR to '/etc/ld.so.conf'
 #
+
+
+
+#alias sbatch="sbatch --mail-user=$( tail -n 1 ${HOME}/.forward ) --mail-type=ALL --parsable "
+
+#	https://slurm.schedmd.com/squeue.html
+#	squeue --m -o "%.24i %.11P %.8j %.8u %.2t %.10M %.6D %R" -S M
+#export SQUEUE_FORMAT="%.24i %.11P %.8j %.8u %.2t %.10M %.6D %R"
+#export SQUEUE_FORMAT="%.24i %.11P %.8j %.8u %.2t %.10M %.6D %.4C %.7m %R"
+export SQUEUE_FORMAT="%.24i %.11P %.8j %.8u %.2t %.8M %.4D %.4C %.4m %R"
+
+export SQUEUE_SORT="M,-i"
 

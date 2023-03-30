@@ -24,3 +24,16 @@ export PATH="/c4/home/gwendt/.local/perl5/bin:$PATH";
 #export PERL5LIB="/c4/home/gwendt/.local/canu-2.1.1/lib/site_perl:$PERL5LIB";
 
 
+
+
+#alias sbatch="sbatch --mail-user=$( tail -n 1 ${HOME}/.forward ) --mail-type=ALL --parsable "
+
+#export sbatch="sbatch --mail-user=XXXXX@ucsf.edu --mail-type=FAIL --export=None "
+
+
+
+#	This stops the escaping of $ when using command completion
+#	like "cat $PWD/RE<TAB>"
+#	-->  "cat \$PWD/RE<TAB>"
+shopt -u progcomp
+
