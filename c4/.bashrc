@@ -13,11 +13,11 @@ if [ -f '${HOME}/google-cloud-sdk/path.bash.inc' ]; then . '${HOME}/google-cloud
 # The next line enables shell command completion for gcloud.
 if [ -f '${HOME}/google-cloud-sdk/completion.bash.inc' ]; then . '${HOME}/google-cloud-sdk/completion.bash.inc'; fi
 
-export PERL_LOCAL_LIB_ROOT="/c4/home/gwendt/.local/perl5:$PERL_LOCAL_LIB_ROOT";
-export PERL_MB_OPT="--install_base /c4/home/gwendt/.local/perl5";
-export PERL_MM_OPT="INSTALL_BASE=/c4/home/gwendt/.local/perl5";
-export PERL5LIB="/c4/home/gwendt/.local/perl5/lib/perl5:$PERL5LIB";
-export PATH="/c4/home/gwendt/.local/perl5/bin:$PATH";
+#export PERL_LOCAL_LIB_ROOT="/c4/home/gwendt/.local/perl5:$PERL_LOCAL_LIB_ROOT";
+#export PERL_MB_OPT="--install_base /c4/home/gwendt/.local/perl5";
+#export PERL_MM_OPT="INSTALL_BASE=/c4/home/gwendt/.local/perl5";
+#export PERL5LIB="/c4/home/gwendt/.local/perl5/lib/perl5:$PERL5LIB";
+#export PATH="/c4/home/gwendt/.local/perl5/bin:$PATH";
 
 #	canu is a long read assembler.
 ##export PERL_LOCAL_LIB_ROOT="/c4/home/gwendt/.local/canu-2.1.1/lib/site_perl:$PERL_LOCAL_LIB_ROOT"

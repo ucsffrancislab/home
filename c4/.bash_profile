@@ -220,7 +220,8 @@ export BLASTDB=/francislab/data1/refs/blast
 
 #	Put this AFTER all of the module stuff
 #PATH=${HOME}/.local/bin:${HOME}/.local/perl/bin:${PATH}:${HOME}/.local/sratoolkit/bin
-PATH=${HOME}/.local/bin:${HOME}/.local/perl/bin:${PATH}
+#PATH=${HOME}/.local/bin:${HOME}/.local/perl/bin:${PATH}
+PATH=${HOME}/.local/bin:${PATH}
 PATH=".:$PATH"
 
 PATH="${PATH}:${HOME}/.local/rmblast/bin"
@@ -287,7 +288,7 @@ export PATH=${PATH}:${HOME}/.local/edirect
 #export SQUEUE_FORMAT="%.24i %.11P %.8j %.8u %.2t %.10M %.6D %R"
 #export SQUEUE_FORMAT="%.24i %.11P %.8j %.8u %.2t %.10M %.6D %.4C %.7m %R"
 #export SQUEUE_FORMAT="%.24i %.11P %.12j %.8u %.2t %.8M %.4D %.4C %.4m %R"
-export SQUEUE_FORMAT="%.24i %.11P %.12j %.8u %.2t %.8M %.4D %.4C %.7m %R"
+export SQUEUE_FORMAT="%.24i %.16P %.24j %.8u %.2t %.8M %.4D %.4C %.7m %R"
 
 export SQUEUE_SORT="M,-i"
 
