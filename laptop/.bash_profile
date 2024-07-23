@@ -1,0 +1,127 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+#PATH=$PATH:$HOME/bin
+
+#export PATH
+
+
+##################################################
+
+#	
+#	EDITOR=vi
+#	export EDITOR
+#	
+
+#	Default
+#PS1=\h:\W \u\$
+PS1='\[\e[1;1m\][\u@\h \w]\$\[\e[0m\] '
+
+#alias gzip="gzip --best"
+alias grep="grep -is"
+alias ..="cd .."
+alias cd..="cd .."
+alias la="\ls -al --color=auto"
+#alias ll="\ls -lG --color=auto"
+alias ll="\ls -l --color=auto"
+alias ln="ln -s"
+alias more="less"
+alias rm="rm -i"
+alias h=history
+alias c="for i in {1..50}; do echo; done"
+alias psme="ps -fU \$USER"
+alias topme="top -U \$USER"
+alias htopme="htop -u \$USER"
+alias vi=vim
+alias qstat="qstat -u \$USER"
+
+#	"Better" done in .inputrc
+#set -o vi
+
+function relink {
+	rm $1
+	ln -s $2 $1
+}
+
+#	-r Read the current history file and append its contents to the history list.
+#	(without using the -r, the history of the new shell will only show those manually added to it.)
+history -r
+#	-s The args are added to the end of the history list as a single entry.
+#history -s pip install --upgrade --user pip awscli boto3 jupyter numpy scipy sklearn pandas sqlalchemy seaborn pandoc boto3
+history -s pip install --upgrade --user pip awscli boto3 jupyter numpy scipy sklearn sqlalchemy pandoc
+
+
+
+
+
+#	
+#	
+#	export LD_LIBRARY_PATH="/home/gwendt/.local/lib/:/home/gwendt/.local/lib64:/home/shared/cbc/local/lib:${LD_LIBRARY_PATH}"
+#	export CPPFLAGS="-I/home/gwendt/.local/include -I/home/gwendt/.local/include/openssl ${CPPFLAGS}"
+#	#export LDFLAGS="-L/home/gwendt/.local/lib -L/home/gwendt/.local/lib64 -Wl,-rpath,/home/gwendt/.local/lib -Wl,-rpath,/home/gwendt/.local/lib64 -L/home/shared/cbc/local/lib ${LDFLAGS}"
+#	export LDFLAGS="-L/home/gwendt/.local/lib -L/home/gwendt/.local/lib64 -Wl,-rpath,/home/gwendt/.local/lib -Wl,-rpath,/home/gwendt/.local/lib64 ${LDFLAGS}"
+#	export CXXFLAGS="-fPIC ${CXXFLAGS}"
+#	
+#	
+#	#
+#	#The Boost C++ Libraries were successfully built!
+#	#
+#	#The following directory should be added to compiler include paths:
+#	#
+#	#export CPPFLAGS="-I/home/gwendt/.local/boost_1_74_0 ${CPPFLAGS}"
+#	#export CPATH="/home/gwendt/.local/boost_1_74_0:${CPATH}"
+#	#    /home/gwendt/.local/boost_1_74_0
+#	#
+#	#The following directory should be added to linker library paths:
+#	#
+#	#export LDFLAGS="-L/home/gwendt/.local/boost_1_74_0/stage/lib ${LDFLAGS}"
+#	#export LD_LIBRARY_PATH="/home/gwendt/.local/boost_1_74_0/stage/lib:${LD_LIBRARY_PATH}"
+#	#    /home/gwendt/.local/boost_1_74_0/stage/lib
+#	#
+#	
+#	
+#	#export BOWTIE_INDEXES=/francislab/data1/refs/bowtie
+#	export BOWTIE2_INDEXES=/francislab/data1/refs/bowtie2
+#	export BLASTDB=/francislab/data1/refs/blastn/
+#	
+#	
+#	
+#	#	Put this AFTER all of the module stuff
+#	#PATH=${HOME}/.local/bin:${HOME}/.local/perl/bin:${PATH}:${HOME}/.local/sratoolkit/bin
+#	PATH=${HOME}/.local/bin:${HOME}/.local/perl/bin:${PATH}
+#	PATH=".:$PATH"
+#	
+#	PERL5LIB=${HOME}/.local/perl/lib
+#	
+#	
+#	#[gwendt@cclc01 /francislab/data1/raw/E-GEOD-105052]$ echo $PATH
+#	#...../usr/lib64/qt-3.3/bin:/opt/bin:/opt/Git/Git-latest/bin:/opt/local/bin
+#	
+#	#	For some reason, the head node has a few extra directories in the PATH???
+#	
+#	#PATH="$PATH:/usr/lib64/qt-3.3/bin:/opt/bin:/opt/Git/Git-latest/bin:/opt/local/bin"
+#	
+#	
+#	umask 0027
+#	
+#	export LD_LIBRARY_PATH=/home/gwendt/.local/lib64:$LD_LIBRARY_PATH
+#	export NGS_LIBDIR=/home/gwendt/.local/lib64
+#	export CLASSPATH=/home/gwendt/.local/jar/ngs-java.jar:$CLASSPATH
+#	
+#	#PATH="~/.local/bowtie2-2.2.2/:~/.local/tophat-2.0.9.Linux_x86_64/:$PATH"
+#	
+#	#export PATH="$HOME/.local/bowtie2-2.2.2:$HOME/.local/bowtie-1.2.3:$HOME/.local/tophat-2.0.9:$PATH"
+#	#export PATH="$HOME/.local/bowtie2-2.2.2:$HOME/.local/bowtie-1.2.3:$HOME/.local/tophat-2.1.1:$PATH"
+#	
+
+
+
+export PATH=".:$HOME/.local/bin:/opt/local/bin:/opt/local/sbin:$PATH"
+
+
