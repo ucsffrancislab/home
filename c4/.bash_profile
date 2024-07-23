@@ -288,7 +288,7 @@ export PATH=${PATH}:${HOME}/.local/edirect
 #export SQUEUE_FORMAT="%.24i %.11P %.8j %.8u %.2t %.10M %.6D %R"
 #export SQUEUE_FORMAT="%.24i %.11P %.8j %.8u %.2t %.10M %.6D %.4C %.7m %R"
 #export SQUEUE_FORMAT="%.24i %.11P %.12j %.8u %.2t %.8M %.4D %.4C %.4m %R"
-export SQUEUE_FORMAT="%.24i %.16P %.24j %.8u %.2t %.8M %.4D %.4C %.7m %R"
+export SQUEUE_FORMAT="%.24i %.16P %.24j %.8u %.2t %.8M %.4D %.4C %.7m %.6y %R"
 
 export SQUEUE_SORT="M,-i"
 
