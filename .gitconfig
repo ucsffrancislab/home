@@ -7,6 +7,7 @@
 	staut = status
 	statu = status
 	stat = status
+	sta = status
 	st = status
 	s = status
 	cm = commit -m
@@ -15,6 +16,8 @@
 	d = diff
 	di = diff
 	dif = diff
+	pus = push
+	pul = pull
 #	git config --global github.user jakewendt
 [github]
 	user = jakewendt
