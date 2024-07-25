@@ -37,6 +37,16 @@ function relink {
 	ln -s $2 $1
 }
 
+
+function port_update {
+	date=`date "+%Y%m%d%H%M%S"`
+	echo -e "selfupdate\noutdated\nupgrade outdated
+		uninstall inactive\nclean --all installed" > /tmp/port_update.$date
+	sudo port -F /tmp/port_update.$date
+	#	\rm /tmp/port_update.$date
+}
+
+
 #	-r Read the current history file and append its contents to the history list.
 #	(without using the -r, the history of the new shell will only show those manually added to it.)
 history -r

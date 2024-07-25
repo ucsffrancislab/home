@@ -13,7 +13,7 @@ Install MacPorts (including the xcode command line tools)
 
 Install some core things
 ```
-sudo port install gcc13
+sudo port install gcc13 datamash
 ```
 
 
