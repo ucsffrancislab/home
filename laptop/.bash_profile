@@ -57,6 +57,9 @@ history -r
 
 
 
-export PATH=".:$HOME/.local/bin:/opt/local/bin:/opt/local/sbin:$PATH"
+export PATH=".:$HOME/.local/bin:$HOME/.python/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH"
 
+
+#	For Homebrew
+eval "$(/usr/local/bin/brew shellenv)"
 
