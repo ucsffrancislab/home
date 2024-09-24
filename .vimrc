@@ -127,3 +127,10 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "	\<cr>%
 "	\<cr>end<esc>1k0C<tab><c-o>:call getchar()<cr>
 
+
+
+
+
+"	20240917 - for some reason vi started replacing my tab with 8 spaces?
+let g:python_recommended_style = 0
+
