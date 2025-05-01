@@ -19,6 +19,13 @@
 :let g:sh_noisk = 'something'
 
 
+"	20250501 - editting R files treat a "." as a word character, which I do not like. Trying to fix. Nope.
+":set iskeyword-=.
+
+" put it in ~/.vim/after/ftplugin/r.vim which does seem to work
+" filetype plugin on " this is probably enabled by default on the HPC
+
+
 :set nobomb
 
 "	link this file as ~/.vimrc
