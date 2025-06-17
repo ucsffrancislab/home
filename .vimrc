@@ -19,6 +19,13 @@
 :let g:sh_noisk = 'something'
 
 
+"	20250501 - editting R files treat a "." as a word character, which I do not like. Trying to fix. Nope.
+":set iskeyword-=.
+
+" put it in ~/.vim/after/ftplugin/r.vim which does seem to work
+" filetype plugin on " this is probably enabled by default on the HPC
+
+
 :set nobomb
 
 "	link this file as ~/.vimrc
@@ -126,4 +133,11 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "	\def
 "	\<cr>%
 "	\<cr>end<esc>1k0C<tab><c-o>:call getchar()<cr>
+
+
+
+
+
+"	20240917 - for some reason vi started replacing my tab with 8 spaces?
+let g:python_recommended_style = 0
 

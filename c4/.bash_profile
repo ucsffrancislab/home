@@ -153,6 +153,6 @@ export SQUEUE_FORMAT="%.24i %.16P %.24j %.8u %.2t %.8M %.4D %.4C %.7m %.6y %R"
 export SQUEUE_SORT="M,-i"
 
 function hc {
-	head $1 | cut -c1-150
+	head $1 | cut -c1-100
 }
 

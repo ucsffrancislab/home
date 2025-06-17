@@ -25,3 +25,7 @@
 	default = matching
 [credential]
 	helper = cache
+[http]
+	postBuffer = 524288000
+[core]
+	compression = 0
