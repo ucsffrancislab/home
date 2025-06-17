@@ -9,11 +9,23 @@ Install Google Chrome
 
 Install MacPorts (including the xcode command line tools)
 
+Install UCSF GlobalProtect
+
+
+
 
 
 Install some core things
 ```
-sudo port install gcc13 datamash
+sudo xcode-select --install
+
+sudo port install gcc13 datamash bash bcftools bzip2 curl git gnutls gnutar gsed gzip htslib python312 py312-pip R rsync wget unzip
+
+sudo port select --set python  python312
+sudo port select --set python3 python312
+
+sudo port select --set pip pip312
+sudo port select --set pip3 pip312
 ```
 
 
@@ -69,8 +81,20 @@ ln -s ~/github/ucsffrancislab/home/laptop/.bashrc
 ln -s ~/github/ucsffrancislab/home/laptop/.bash_profile 
 ln -s ~/github/ucsffrancislab/home/.gitconfig 
 ln -s ~/github/ucsffrancislab/home/laptop/.ssh/config .ssh/
+```
+
+Set Terminal to use MacPort's bash
+```
+
+
+
 
 ```
+
+
+
+
+
 
 Install R
 ```
@@ -86,7 +110,18 @@ BiocManager::install(version = "3.19")
 
 Install Python
 ```
-sudo port install python3
+sudo port install python312
+
+sudo port select --set python  python312
+sudo port select --set python3 python312
+    
+sudo port select --set pip pip312
+sudo port select --set pip3 pip312
+
+\rm ~/.python
+ln -s /opt/local/Library/Frameworks/Python.framework/Versions/Current ~/.python
+
+pip install --user --upgrade pip biopython jupyter numpy pandas scikit-learn seaborn matplotlib
 ```
 
 
@@ -107,7 +142,6 @@ It leaves some stuff here, which I may or may not remove.
 /Library/Application\ Support/JAMF/tmp/CheckOwnership.sh
 /Library/Application\ Support/JAMF/tmp/macdeploy-standard.sh
 ```
-
 
 
 I don't like have a my prompt changed, so it can be reset by setting HostName.
