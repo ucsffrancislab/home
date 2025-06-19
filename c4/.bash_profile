@@ -156,3 +156,7 @@ function hc {
 	head $1 | cut -c1-100
 }
 
+
+export BCFTOOLS_PLUGINS="$HOME/.local/bin"
+
+
