@@ -16,7 +16,7 @@
 ":set g:sh_noisk
 "	whooo.  found some code in syntax/sh.vim to checks the existance
 " of g:sh_noisk before adding the "." to iskeyword
-:let g:sh_noisk = 'something'
+let g:sh_noisk = 'something'
 
 
 "	20250501 - editting R files treat a "." as a word character, which I do not like. Trying to fix. Nope.
@@ -26,7 +26,7 @@
 " filetype plugin on " this is probably enabled by default on the HPC
 
 
-:set nobomb
+set nobomb
 
 "	link this file as ~/.vimrc
 
@@ -37,15 +37,15 @@
 ":set invlist (what's the difference between list and invlist?)
 ":set list
 
-:syntax enable
-:set number
+syntax enable
+set number
 
 ":set softtabstop=0
-:set ts=2
+set ts=2
 ":set expandtab
 
 " ~/.vim/colors/wendt.vim
-:colorscheme wendt
+colorscheme wendt
 
 " map movement keys to "Escape" before moving
 ":map! [A k
@@ -53,10 +53,10 @@
 ":map! [C l
 ":map! [D h
 "	Rather than typing Ctrl-V then Up-Arrow, <up> (and other macros) works
-:map! <up>    <esc>k
-:map! <down>  <esc>j
-:map! <right> <esc>l
-:map! <left>  <esc>h
+map! <up>    <esc>k
+map! <down>  <esc>j
+map! <right> <esc>l
+map! <left>  <esc>h
 
 " Jump to last position (set cursor position to the line last at on close)
 autocmd BufReadPost *
@@ -70,7 +70,7 @@ autocmd BufReadPost *
 
 "	As of my recent upgrade to Mountain Lion, vim clears the screen on exit
 "	This stops that clearing.  Don't know exactly how though.
-:set t_ti= t_te=
+set t_ti= t_te=
 
 
 "	Just in case some file type specific format options
