@@ -4,15 +4,11 @@
 General settings and setup for my work computers
 
 
+Install [Google Chrome](https://www.google.com/chrome/)
 
-Install Google Chrome
+Install [MacPorts](https://www.macports.org/) (including the xcode command line tools)
 
-Install MacPorts (including the xcode command line tools)
-
-Install UCSF GlobalProtect
-
-
-
+Install [UCSF GlobalProtect](https://software.ucsf.edu/content/vpn-virtual-private-network)
 
 
 Install some core things
@@ -58,8 +54,19 @@ FrancisLab:home jake$
 So I downloaded the source and installed it locally.
 
 
-Install git
 
+
+
+
+Add key to [Github](https://github.com/settings/keys)
+
+```
+ssh-keygen 
+cat ~/.ssh/id_ed25519.pub 
+```
+
+
+Install git
 
 ```
 sudo port install git
@@ -68,6 +75,7 @@ mkdir ~/github/
 mkdir ~/github/ucsffrancislab
 cd ~/github/ucsffrancislab
 
+git clone git@github.com:ucsffrancislab/PhIP-Seq.git
 git clone git@github.com:ucsffrancislab/genomics.git
 git clone git@github.com:ucsffrancislab/home.git
 
@@ -85,10 +93,7 @@ ln -s ~/github/ucsffrancislab/home/laptop/.ssh/config .ssh/
 
 Set Terminal to use MacPort's bash
 ```
-
-
-
-
+/opt/local/bin/bash
 ```
 
 
@@ -104,7 +109,10 @@ sudo port install r
 r
 if (!require("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
-BiocManager::install(version = "3.19")
+BiocManager::install()
+
+BiocManager::install(version = "3.19") # for 4.4
+BiocManager::install(version = "3.21") # for 4.5
 ```
 
 
@@ -119,10 +127,33 @@ sudo port select --set pip pip311
 sudo port select --set pip3 pip311
 
 \rm ~/.python
-ln -s /opt/local/Library/Frameworks/Python.framework/Versions/Current ~/.python
+
+#ln -s /opt/local/Library/Frameworks/Python.framework/Versions/Current ~/.python
+ln -s $HOME/Library/Python/3.11/ ~/.python
 
 pip install --user --upgrade pip biopython jupyter numpy pandas scikit-learn seaborn matplotlib
 ```
+
+
+
+Sign in to slack channels francis-lab.slack.com and ucsf-c4.slack.com
+
+
+
+Set Hot Corners to start screen saver
+
+Set Track pad tap to click
+
+
+
+
+
+
+
+
+
+
+
 
 
 
