@@ -19,13 +19,13 @@ Install some core things
 ```
 sudo xcode-select --install
 
-sudo port install gcc13 datamash bash bcftools bzip2 curl git gnutls gnutar gsed gzip htslib python312 py312-pip R rsync wget unzip
+sudo port install gcc13 datamash bash bcftools bzip2 curl git gnutls gnutar gsed gzip htslib python311 py311-pip R rsync wget unzip
 
-sudo port select --set python  python312
-sudo port select --set python3 python312
+sudo port select --set python  python311
+sudo port select --set python3 python311
 
-sudo port select --set pip pip312
-sudo port select --set pip3 pip312
+sudo port select --set pip pip311
+sudo port select --set pip3 pip311
 ```
 
 
@@ -110,13 +110,13 @@ BiocManager::install(version = "3.19")
 
 Install Python
 ```
-sudo port install python312
+sudo port install python311
 
-sudo port select --set python  python312
-sudo port select --set python3 python312
+sudo port select --set python  python311
+sudo port select --set python3 python311
     
-sudo port select --set pip pip312
-sudo port select --set pip3 pip312
+sudo port select --set pip pip311
+sudo port select --set pip3 pip311
 
 \rm ~/.python
 ln -s /opt/local/Library/Frameworks/Python.framework/Versions/Current ~/.python
